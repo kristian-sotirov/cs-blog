@@ -1,0 +1,48 @@
+h1 a {
+	color: OldLace;
+	font-family: fantasy;
+}
+
+h1 a:hover {
+	color: OldLace;
+}
+
+/* h2 a {
+	color: SaddleBrown;
+	font-family: fantasy;
+}
+
+h2 a:hover {
+	color: SaddleBrown;
+} */
+
+.post-title {
+	color: SaddleBrown;
+	font-family: fantasy;
+}
+
+.post-title:hover {
+	color: SaddleBrown;
+	font-family: fantasy;
+}
+
+.comment {
+	margin-bottom: 20px;
+}
+
+.add-comment {
+	margin-bottom: 30px;
+}
+
+.heading {
+	background-color: SaddleBrown;
+	padding: 20px 10px 30px 20px;
+	margin-top: -20px;
+	margin-left: -15px;
+}
+
+body {
+	background-color: Oldlace;
+	padding-left: 15px;
+	padding-top: 20px;
+}
