@@ -1,0 +1,31 @@
+{% extends 'cv/base.html' %}
+
+{% block content %}
+
+	<h2>Education</h2>
+	
+	{% if user.is_authenticated %}
+	<div>
+		<a id="new_edu" href="{% url 'education_new' %}">Add</a>
+	</div>
+	{% endif %}
+
+	{% for education in educations %}
+		<div>
+			<h3> {{education.name}} </h3>	
+			<p>
+				{{ education.description|linebreaksbr }}
+			</p>
+			<p>
+				{{ education.begin_date }}
+			</p>
+			<p>
+				{{ education.end_date }}		
+			</p>
+			{% if user.is_authenticated %}
+				<a id="edit_edu_{{education.pk}}" class="btn btn-default" href="{% url 'education_edit' pk=education.pk %}">Edit</a>
+			{% endif %}
+		</div>
+	{% endfor %}
+
+{% endblock %}

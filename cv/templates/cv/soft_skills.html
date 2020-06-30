@@ -1,0 +1,23 @@
+{% extends 'cv/base.html' %}
+
+{% block content %}
+
+	<h2>Soft Skills</h2>
+	{% if user.is_authenticated %}
+	<div>
+		<a id="new-skill" href="{% url 'soft_skill_new' %}">Add</a>
+	</div>
+	{% endif %}
+	
+	<ul>
+		{% for skill in skills %}
+			<div>
+				<li>{{ skill.skill }}</li>
+				{% if user.is_authenticated %}
+				<a id="edit_skill_{{skill.pk}}" class="btn btn-default" href="{% url 'soft_skill_edit' pk=skill.pk %}" >Edit</a>
+				{% endif %}
+			</div>	
+		{% endfor %}
+	</ul>
+
+{% endblock %}

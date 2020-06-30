@@ -1,0 +1,87 @@
+{% extends 'cv/base.html' %}
+
+{% block content %}
+	{% if user.is_authenticated or educations %}
+		<hr>
+		<h2><a id="education" href="{% url 'education_page' %}">Education</a></h2>
+		<div>
+			{% for education in educations %}
+				<div>
+					<h3> {{education.name}} </h3>	
+					<p>
+						{{ education.description|linebreaksbr }}
+					</p>
+					<p>
+						{{ education.begin_date }}
+					</p>
+					<p>
+						{{ education.end_date }}		
+					</p>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+	{% if user.is_authenticated or projects %}
+		<hr>
+		<h2><a id="projects" href="{% url 'projects_page' %}">Projects</a></h2>
+		<div>
+			{% for project in projects %}
+				<div>
+					<h3>{{project.description}}</h3>
+					<p>{{project.date}}</p>
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}
+	{% if user.is_authenticated or soft_skills %}
+		<hr>
+		<h2><a id="soft-skills" href="{% url 'soft_skills_page' %}">Soft Skills</a></h2>
+		<div>	
+			<ul>
+			{% for skill in soft_skills %}
+				<div>
+					<li>{{ skill.skill }}</li>	
+				</div>
+			{% endfor %}	
+			</ul>	
+		</div>
+	{% endif %}
+	{% if user.is_authenticated or langs or systems %}
+		<hr>
+		<h2><a id="technical-skills" href="{% url 'technical_skills_page' %}">Technical Skills</a></h2>
+		{% if langs %}
+			<div>
+				<h3>Programming Languages</h3>
+				<ul>
+					{% for lang in langs %}
+						<li>{{lang.skill}}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+		{% if systems %}
+			<div>
+				<h3>Operating Systems</h3>
+				<ul>
+					{% for system in systems %}
+						<li>{{ system.skill }}</li>
+					{% endfor %}
+				</ul>
+			</div>
+		{% endif %}
+	{% endif %}	
+	{% if user.is_authenticated or interests %}
+		<hr>
+		<h2><a id="interests" href="{% url 'interests_page' %}">Interests</a></h2>
+		<div>
+			<ul>
+			{% for interest in interests %}
+				<li>{{ interest.interest }}</li>
+			{% endfor %}
+			</ul>
+		</div>
+	{% endif %}	
+	<div class="blog">
+		<a href="{% url 'post_list' %}">Back to blog</a>
+	</div>		
+{% endblock %}

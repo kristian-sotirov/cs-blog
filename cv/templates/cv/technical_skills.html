@@ -1,0 +1,38 @@
+{% extends 'cv/base.html' %}
+
+{% block content %}
+
+	<h2>Technical Skill</h2>
+	{% if user.is_authenticated %}
+	<div>
+		<a id="new-skill" href="{% url 'technical_skill_new' %}">Add</a>
+	</div>
+	{% endif %}
+	{% if langs %}
+		<div>
+			<h3>Programming Languages</h3>
+			<ul>
+				{% for lang in langs %}
+					<li>{{lang.skill}}</li>
+					{% if user.is_authenticated %}
+						<a id="edit_skill_{{lang.pk}}" href="{% url 'technical_skill_edit' pk=lang.pk %}">Edit</a>
+					{% endif %}
+				{% endfor %}
+			</ul>
+	</div>
+	{% endif %}
+	{% if systems %}
+		<div>
+			<h3>Operating Systems</h3>
+			<ul>
+				{% for system in systems %}
+					<li>{{ system.skill }}</li>
+					{% if user.is_authenticated %}
+						<a id="edit_skill_{{system.pk}}" href="{% url 'technical_skill_edit' pk=system.pk %}">Edit</a>
+					{% endif %}	
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}		
+
+{% endblock %}
