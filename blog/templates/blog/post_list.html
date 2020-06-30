@@ -4,12 +4,15 @@
 	{% for post in posts %}	
 		<div> 
 			<h2><a href="{% url 'post_detail' pk=post.pk %}" class="post-title">{{ post.title}}</a></h2>
-			<p>	{{ post.text|linebreaksbr }} </p>
+			<p class="post"> {{ post.text|linebreaksbr }} </p>
 			<p><i>published: <time>{{ post.published_date }} </time> </i> </p>	
-			<a href="{% url 'post_detail' pk=post.pk %}">Comments:{{post.approved_comments.count}} </a>
+			<a class="comments" href="{% url 'post_detail' pk=post.pk %}">Comments:{{post.approved_comments.count}} </a>
 			{% if user.is_authenticated %}
-				<p>Comments to approve: {{post.disapproved_comments.count}}</p>
+				<p class="comments">Comments to approve: {{post.disapproved_comments.count}}</p>
 			{% endif %}				
 		</div>
-	{% endfor %}		
+	{% endfor %}
+	<footer class="about-me">
+		<h3><a href="{% url 'cv_page' %}">About me</a></h3>
+	</footer>			
 {% endblock %}	

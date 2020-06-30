@@ -1,12 +1,101 @@
 h1 {
 	text-align: center;
+	font-family: serif;
 }
 
-hr {
-	border-top: 2px solid black;
+h2 a {
+	color: SaddleBrown;	
+	font-family: serif;
+}
+
+h2 a:hover {
+	color: SaddleBrown;
 }
 
 body {
 	padding-left: 15px;
+	background-color: Oldlace;
+	font-family: serif;
+}
 
+#first-line {
+	margin-left: -15px;
+	margin-right: 0px;
+}
+
+.name {
+	color: OldLace;
+}
+
+.name:hover {
+	color: OldLace;
+}
+
+hr {
+	border-top: 2px solid black;
+	margin-right: 15px;
+}
+
+.info {
+	background-color: SaddleBrown;
+	margin-top: -10px;
+	margin-left: -15px;
+	margin-bottom: -20px;
+	padding-bottom: 10px;
+}
+
+.heading {
+	background-color: SaddleBrown;
+	margin: -20px 0px 10px -15px;
+	padding: 30px 10px;
+}
+
+.info p {
+	color: Oldlace;
+	text-align: center;
+	font-size: 17px;
+	font-family: serif;
+}
+
+.edu div h3 {
+	padding-left: 15px;
+	font-family: serif;
+}
+
+.edu div p {
+	padding-left: 30px;
+}
+
+
+.edu-describe {
+	font-size: 18px;
+	font-family: serif;
+}
+
+.dates {
+	font-size: 15px;
+	margin-top: -5px;
+}
+
+.pro div h3 {
+	padding-left: 15px;
+	font-family: serif;
+}
+
+.pro div p {
+	font-size: 15px;
+	text-align: right;
+	margin-top: -20px;
+	margin-bottom: 20px;
+	margin-right: 20px;
+}
+
+
+.tech div h3 {
+	padding-left: 15px;
+	font-size: 24px;
+}
+
+li {
+	font-size: 19px
 }

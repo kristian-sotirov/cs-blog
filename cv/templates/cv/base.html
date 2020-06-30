@@ -7,7 +7,9 @@
 		<title>Curriculum Vitae</title>
 	</head>
 	<body>
-		<h1><a href="{% url 'cv_page' %}">Kristian Sotirov</a></h1>
+		<div class="heading" >
+			<h1><a class="name" href="{% url 'cv_page' %}">Kristian Sotirov</a></h1>
+		</div>	
 		{% block content %}
 		{% endblock %}
 	</body>

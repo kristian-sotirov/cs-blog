@@ -1,6 +1,6 @@
 h1 a {
 	color: OldLace;
-	font-family: fantasy;
+	font-family: serif;
 }
 
 h1 a:hover {
@@ -18,12 +18,12 @@ h2 a:hover {
 
 .post-title {
 	color: SaddleBrown;
-	font-family: fantasy;
+	font-family: serif;
 }
 
 .post-title:hover {
 	color: SaddleBrown;
-	font-family: fantasy;
+	font-family: serif;
 }
 
 .comment {
@@ -34,6 +34,18 @@ h2 a:hover {
 	margin-bottom: 30px;
 }
 
+.comment p {
+	font-size: 15px;
+}
+
+.comment strong {
+	font-size: 16px;
+}
+
+.comments {
+	font-size: 15px;
+}
+
 .heading {
 	background-color: SaddleBrown;
 	padding: 20px 10px 30px 20px;
@@ -41,8 +53,29 @@ h2 a:hover {
 	margin-left: -15px;
 }
 
+footer {
+	text-align: center;
+	background-color: SaddleBrown;
+	margin-left: -15px;
+	padding: 10px 20px 10px 20px;
+	font-size: 20px;
+}
+
+footer a {
+	color: Oldlace;
+}
+
+footer a:hover {
+	color: Oldlace;
+}
+
+.post {
+	font-size: 18px;
+}
+
 body {
 	background-color: Oldlace;
 	padding-left: 15px;
 	padding-top: 20px;
+	font-family: serif;
 }

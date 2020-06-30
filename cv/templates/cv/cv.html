@@ -1,21 +1,23 @@
 {% extends 'cv/base.html' %}
 
 {% block content %}
+	<div class="info">
+		<p>Location: Sofia, Bulgaria/Birmingham, United Kingdom</p>
+		<p>Email: k.b.sotirov@gmail.com</p>
+		<p>Phone number: +359 889 693 434</p>
+	</div>
+	<hr id="first-line">
 	{% if user.is_authenticated or educations %}
-		<hr>
 		<h2><a id="education" href="{% url 'education_page' %}">Education</a></h2>
-		<div>
+		<div class="edu">
 			{% for education in educations %}
 				<div>
 					<h3> {{education.name}} </h3>	
-					<p>
+					<p class="edu-describe">
 						{{ education.description|linebreaksbr }}
 					</p>
-					<p>
-						{{ education.begin_date }}
-					</p>
-					<p>
-						{{ education.end_date }}		
+					<p class="dates">
+						<i>{{ education.begin_date }}-{{ education.end_date }}</i>		
 					</p>
 				</div>
 			{% endfor %}
@@ -24,11 +26,11 @@
 	{% if user.is_authenticated or projects %}
 		<hr>
 		<h2><a id="projects" href="{% url 'projects_page' %}">Projects</a></h2>
-		<div>
+		<div class="pro">
 			{% for project in projects %}
 				<div>
 					<h3>{{project.description}}</h3>
-					<p>{{project.date}}</p>
+					<p><i>{{project.date}}</i></p>
 				</div>
 			{% endfor %}
 		</div>
@@ -39,7 +41,7 @@
 		<div>	
 			<ul>
 			{% for skill in soft_skills %}
-				<div>
+				<div class="soft">
 					<li>{{ skill.skill }}</li>	
 				</div>
 			{% endfor %}	
@@ -49,6 +51,7 @@
 	{% if user.is_authenticated or langs or systems %}
 		<hr>
 		<h2><a id="technical-skills" href="{% url 'technical_skills_page' %}">Technical Skills</a></h2>
+		<div class="tech">
 		{% if langs %}
 			<div>
 				<h3>Programming Languages</h3>
@@ -69,11 +72,12 @@
 				</ul>
 			</div>
 		{% endif %}
+		</div>
 	{% endif %}	
 	{% if user.is_authenticated or interests %}
 		<hr>
 		<h2><a id="interests" href="{% url 'interests_page' %}">Interests</a></h2>
-		<div>
+		<div class="interest">
 			<ul>
 			{% for interest in interests %}
 				<li>{{ interest.interest }}</li>
