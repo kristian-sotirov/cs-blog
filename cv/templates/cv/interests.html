@@ -12,10 +12,13 @@
 	<ul>
 		{% for interest in interests %}
 			<div>
-				<li>{{ interest.interest }}</li>
-				{% if user.is_authenticated %}	
-					<a id="edit_interest_{{interest.pk}}" href="{% url 'interest_edit' pk=interest.pk %}">Edit</a>	
-				{% endif %}	
+				<li>
+					{{ interest.interest }}
+					{% if user.is_authenticated %}	
+						<a id="edit_interest_{{interest.pk}}"  href="{% url 'interest_edit' pk=interest.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>	
+						<a id="remove_interest_{{interest.pk}}"  href="{% url 'interest_remove' pk=interest.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+					{% endif %}	
+				</li>
 			</div>
 		{% endfor %}
 	</ul>

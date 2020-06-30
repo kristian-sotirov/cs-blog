@@ -26,7 +26,7 @@ def education_new(request):
 			return redirect('education_page')
 	else:
 		form = EducationForm()	
-	return render(request, 'cv/education_edit.html', {'form':form})
+	return render(request, 'cv/edit.html', {'form':form})
 
 @login_required		
 def education_edit(request, pk):
@@ -38,7 +38,13 @@ def education_edit(request, pk):
 			return redirect('education_page')
 	else:
 		form = EducationForm(instance=education)
-	return render(request, 'cv/education_edit.html', {'form':form})
+	return render(request, 'cv/edit.html', {'form':form})
+
+@login_required	
+def education_remove(request, pk):
+	education = get_object_or_404(Education, pk=pk)	
+	education.delete()
+	return redirect('education_page')
 	
 def projects_page(request):
 	projects = Project.objects.all()
@@ -53,7 +59,7 @@ def project_new(request):
 			return redirect('projects_page')
 	else: 		
 		form = ProjectForm()	
-	return render(request, 'cv/project_edit.html', {'form':form})
+	return render(request, 'cv/edit.html', {'form':form})
 
 @login_required		
 def project_edit(request, pk):
@@ -65,7 +71,13 @@ def project_edit(request, pk):
 			return redirect('projects_page')
 	else:
 		form = ProjectForm(instance=project)
-	return 	render(request, 'cv/project_edit.html', {'form':form})
+	return 	render(request, 'cv/edit.html', {'form':form})
+	
+@login_required	
+def	project_remove(request, pk):
+	project = get_object_or_404(Project, pk=pk)
+	project.delete()
+	return redirect('projects_page')
 	
 def soft_skills_page(request):
 	skills = Skill.objects.filter(detail='Soft')	
@@ -82,7 +94,7 @@ def soft_skill_new(request):
 			return redirect('soft_skills_page')
 	else:
 		form = SoftSkillForm()
-	return render(request, 'cv/soft_skill_edit.html', {'form':form})
+	return render(request, 'cv/edit.html', {'form':form})
 
 @login_required		
 def soft_skill_edit(request, pk):
@@ -96,7 +108,13 @@ def soft_skill_edit(request, pk):
 			return redirect('soft_skills_page')		
 	else:
 		form = SoftSkillForm(instance=skill)
-	return render(request, 'cv/soft_skill_edit.html', {'form':form})
+	return render(request, 'cv/edit.html', {'form':form})
+	
+@login_required
+def soft_skill_remove(request, pk):
+	skill = get_object_or_404(Skill, pk=pk)
+	skill.delete()
+	return redirect('soft_skills_page')
 	
 def technical_skills_page(request):
 	langs = Skill.objects.filter(detail='Programming Language')
@@ -112,7 +130,7 @@ def technical_skill_new(request):
 			return redirect('technical_skills_page')
 	else:
 		form = TechnicalSkillForm()		
-	return render(request, 'cv/technical_skill_edit.html', {'form':form})
+	return render(request, 'cv/edit.html', {'form':form})
 	
 @login_required	
 def technical_skill_edit(request, pk):
@@ -124,7 +142,13 @@ def technical_skill_edit(request, pk):
 			return redirect('technical_skills_page')
 	else:
 		form = TechnicalSkillForm(instance=skill)
-	return render(request, 'cv/technical_skill_edit.html', {'form':form})
+	return render(request, 'cv/edit.html', {'form':form})
+
+@login_required	
+def technical_skill_remove(request, pk):	
+	skill = get_object_or_404(Skill, pk=pk)
+	skill.delete()
+	return redirect('technical_skills_page')
 	
 def interests_page(request):
 	interests = Interest.objects.all()
@@ -139,7 +163,7 @@ def interest_new(request):
 			return redirect('interests_page')
 	else:
 		form = InterestForm()
-	return render(request, 'cv/interest_edit.html', {'form':form})
+	return render(request, 'cv/edit.html', {'form':form})
 
 @login_required
 def interest_edit(request, pk):
@@ -151,8 +175,13 @@ def interest_edit(request, pk):
 			return redirect('interests_page')
 	else:
 		form = InterestForm(instance = interest)
-	return render(request, 'cv/interest_edit.html', {'form':form})
-				
+	return render(request, 'cv/edit.html', {'form':form})
+	
+@login_required	
+def interest_remove(request, pk):
+	interest = get_object_or_404(Interest, pk=pk)
+	interest.delete()
+	return redirect('interests_page')				
 		
 
 

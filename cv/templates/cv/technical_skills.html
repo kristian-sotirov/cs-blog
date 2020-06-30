@@ -13,10 +13,13 @@
 			<h3>Programming Languages</h3>
 			<ul>
 				{% for lang in langs %}
-					<li>{{lang.skill}}</li>
-					{% if user.is_authenticated %}
-						<a id="edit_skill_{{lang.pk}}" href="{% url 'technical_skill_edit' pk=lang.pk %}">Edit</a>
-					{% endif %}
+					<li>
+						{{lang.skill}}
+						{% if user.is_authenticated %}
+							<a id="edit_skill_{{lang.pk}}" href="{% url 'technical_skill_edit' pk=lang.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+							<a id="remove_skill_{{lang.pk}}" href="{% url 'technical_skill_remove' pk=lang.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+						{% endif %}
+					</li>
 				{% endfor %}
 			</ul>
 	</div>
@@ -26,10 +29,13 @@
 			<h3>Operating Systems</h3>
 			<ul>
 				{% for system in systems %}
-					<li>{{ system.skill }}</li>
-					{% if user.is_authenticated %}
-						<a id="edit_skill_{{system.pk}}" href="{% url 'technical_skill_edit' pk=system.pk %}">Edit</a>
-					{% endif %}	
+					<li>
+						{{ system.skill }}
+						{% if user.is_authenticated %}
+							<a id="edit_skill_{{system.pk}}"  href="{% url 'technical_skill_edit' pk=system.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+							<a id="remove_skill_{{system.pk}}" href="{% url 'technical_skill_remove' pk=system.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+						{% endif %}	
+					</li>
 				{% endfor %}
 			</ul>
 		</div>

@@ -1,11 +1,15 @@
 h1 {
 	text-align: center;
-	font-family: serif;
+}
+
+h2 {
+	color: SaddleBrown;
+
 }
 
 h2 a {
 	color: SaddleBrown;	
-	font-family: serif;
+
 }
 
 h2 a:hover {
@@ -54,12 +58,11 @@ hr {
 	color: Oldlace;
 	text-align: center;
 	font-size: 17px;
-	font-family: serif;
 }
 
-.edu div h3 {
+h3 {
 	padding-left: 15px;
-	font-family: serif;
+
 }
 
 .edu div p {
@@ -69,7 +72,6 @@ hr {
 
 .edu-describe {
 	font-size: 18px;
-	font-family: serif;
 }
 
 .dates {
@@ -77,9 +79,10 @@ hr {
 	margin-top: -5px;
 }
 
-.pro div h3 {
-	padding-left: 15px;
-	font-family: serif;
+
+#new_edu {
+	margin-top: 15px;
+	margin-left:15px;
 }
 
 .pro div p {
@@ -88,12 +91,6 @@ hr {
 	margin-top: -20px;
 	margin-bottom: 20px;
 	margin-right: 20px;
-}
-
-
-.tech div h3 {
-	padding-left: 15px;
-	font-size: 24px;
 }
 
 li {
