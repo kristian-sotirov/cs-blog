@@ -5,30 +5,28 @@
 	<h2>Education</h2>
 
 	{% if educations %}
-	
-	<div class="edu">
-	{% for education in educations %}
-		<div>
-			<h3> {{education.name}} </h3>	
-			<p class="edu-describe">
-				{{ education.description|linebreaksbr }}
-			</p>
-			<p class="dates">
-				<i>{{ education.begin_date }}-{{ education.end_date }}</i>		
-			</p>
-			{% if user.is_authenticated %}
-				<a id="edit_edu_{{education.pk}}" class="btn btn-default" href="{% url 'education_edit' pk=education.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-				<a id="remove_edu_{{education.pk}}" class="btn btn-default" href="{% url 'education_remove' pk=education.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-			{% endif %}
+		<div class="edu category">
+			{% for education in educations %}
+				<div>
+					<h3> {{education.name}} </h3>	
+					<p class="edu-describe">
+						{{ education.description|linebreaksbr }}
+					</p>
+					<p class="dates">
+						<i>{{ education.begin_date }}-{{ education.end_date }}</i>		
+					</p>
+					{% if user.is_authenticated %}
+						<a id="edit_edu_{{education.pk}}" class="btn btn-warning skill-button" href="{% url 'education_edit' pk=education.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+						<a id="remove_edu_{{education.pk}}" class="btn btn-danger" href="{% url 'education_remove' pk=education.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+					{% endif %}
+				</div>
+			{% endfor %}
 		</div>
-	{% endfor %}
-	</div>
-	
 	{% endif %}
 	
 	{% if user.is_authenticated %}
 	<div>
-		<a id="new_edu" class="btn btn-default" href="{% url 'education_new' %}">Add</a>
+		<a id="new_edu" class="btn btn-success add-button" href="{% url 'education_new' %}">Add</a>
 	</div>
 	{% endif %}
 

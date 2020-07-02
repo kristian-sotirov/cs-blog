@@ -65,6 +65,10 @@ h3 {
 
 }
 
+.category {
+	margin-bottom: 20px;
+}
+
 .edu div p {
 	padding-left: 30px;
 }
@@ -93,6 +97,31 @@ h3 {
 	margin-right: 20px;
 }
 
+.project-button {
+	margin-top: -10px;
+	margin-bottom: 15px;
+}
+
+.skill-button {
+	margin-left: 15px;
+}
+
+.add-button {
+	margin-top: 20px;
+}
+
+.authenticated {
+	margin-bottom: 10px;
+}
+
 li {
 	font-size: 19px
 }
+
+.blog {
+	margin: 40px 0px 20px 10px;
+}
+
+
+
+

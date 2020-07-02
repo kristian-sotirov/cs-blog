@@ -1,26 +1,27 @@
 {% extends 'cv/base.html' %}
 
 {% block content %}
-
 	<h2>Interests</h2>
-	
-	{% if user.is_authenticated %}
-		<div>
-			<a id="new-interest" href="{% url 'interest_new' %}">Add</a>
-		</div>
-	{% endif %}
 	<ul>
 		{% for interest in interests %}
-			<div>
+			{% if user.is_authenticated %}
+				<div class="authenticated">
+			{% else %}
+				<div>
+			{% endif %}	
 				<li>
 					{{ interest.interest }}
 					{% if user.is_authenticated %}	
-						<a id="edit_interest_{{interest.pk}}"  href="{% url 'interest_edit' pk=interest.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>	
-						<a id="remove_interest_{{interest.pk}}"  href="{% url 'interest_remove' pk=interest.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+						<a id="edit_interest_{{interest.pk}}" class="btn btn-warning skill-button"  href="{% url 'interest_edit' pk=interest.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>	
+						<a id="remove_interest_{{interest.pk}}" class="btn btn-danger" href="{% url 'interest_remove' pk=interest.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 					{% endif %}	
 				</li>
 			</div>
 		{% endfor %}
 	</ul>
-
+	{% if user.is_authenticated %}
+		<div>
+			<a id="new-interest" class="btn btn-success add-button" href="{% url 'interest_new' %}">Add</a>
+		</div>
+	{% endif %}
 {% endblock %}

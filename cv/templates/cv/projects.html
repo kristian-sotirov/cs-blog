@@ -1,24 +1,27 @@
 {% extends 'cv/base.html' %}
 
 {% block content %}
-
 	<h2>Projects</h2>	
+	{% if projects %}
+		<div class="pro category">
+			{% for project in projects %}
+				<div>
+					<h3>{{project.description}}</h3>
+					<p class="dates">
+						{{project.date}}
+					</p>
+					{% if user.is_authenticated %}
+						<a id="edit_pro_{{project.pk}}" class="btn btn-warning skill-button project-button" href="{% url 'project_edit' pk=project.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+						<a id="remove_pro_{{project.pk}}" class="btn btn-danger project-button" href="{% url 'project_remove' pk=project.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+					{% endif %}
+				</div>
+			{% endfor %}
+		</div>
+	{% endif %}	
 	{% if user.is_authenticated %}
 	<div>
-		<a id="new_pro" href="{% url 'project_new' %}">Add</a>
+		<a id="new_pro" class="btn btn-success add-button"href="{% url 'project_new' %}">Add</a>
 	</div>
 	{% endif  %}
-	{% for project in projects %}
-		<div>
-			<h3>{{project.description}}</h3>
-			<p>
-				{{project.date}}
-			</p>
-			{% if user.is_authenticated %}
-				<a id="edit_pro_{{project.pk}}" class="btn btn-default" href="{% url 'project_edit' pk=project.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-				<a id="remove_pro_{{project.pk}}" class="btn btn-default" href="{% url 'project_remove' pk=project.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
-			{% endif %}
-		</div>
-	{% endfor %}
 
 {% endblock %}
