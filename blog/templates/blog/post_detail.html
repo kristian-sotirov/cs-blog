@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+{% if user.is_authenticated or post.published_date %}
 	<div>
 		<h2 class="post-title"> {{post.title}} </h2>
 		<p class="post"> {{ post.text|linebreaksbr }} </p>
@@ -9,13 +10,13 @@
 				<i>{{ post.published_date }}</i> 
 			</div>
 		{% else %}
-			<a class="btn btn-default" href="{% url 'post_publish' pk=post.pk %}">Publish</a>	
+			<a class="btn btn-success publish-button" href="{% url 'post_publish' pk=post.pk %}">Publish</a>	
 		{% endif %}	
 	</div>
 	{% if user.is_authenticated %}
 		<div>
-				<a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
-				<a class="btn btn-default" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+				<a class="btn btn-warning" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+				<a class="btn btn-danger" href="{% url 'post_remove' pk=post.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 		</div>			
 	{% endif %}
 
@@ -30,10 +31,10 @@
 				<i>{{ comment.created_date }}</i>
 			</div>	
 			{% if not comment.approved_comment %}
-				<a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+				<a class="btn btn-success" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
 			{% endif %}	
 			{% if user.is_authenticated %}
-			<a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+			<a class="btn btn-danger" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
 			{% endif %}
 		</div>
 		{% endif %}
@@ -41,7 +42,7 @@
 		<p>No comments here yet!</p>
 	{% endfor %}
 	<div class="add-comment">
-		<a class="btn btn-default" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comments</a>
+		<a class="btn btn-info" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comments</a>
 	</div>
-		
+{% endif %}		
 {% endblock %}

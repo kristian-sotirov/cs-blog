@@ -3,15 +3,28 @@
 {% block content %}
 	{% for post in posts %}	
 		<div> 
-			<h2><a href="{% url 'post_detail' pk=post.pk %}" class="post-title">{{ post.title}}</a></h2>
+			<h2><a href="{% url 'post_detail' pk=post.pk %}" class="post-title">{{post.title}}</a></h2>
 			<p class="post"> {{ post.text|linebreaksbr }} </p>
-			<p><i>published: <time>{{ post.published_date }} </time> </i> </p>	
+			<p class="date"><i>published: <time>{{ post.published_date }} </time> </i> </p>	
 			<a class="comments" href="{% url 'post_detail' pk=post.pk %}">Comments:{{post.approved_comments.count}} </a>
 			{% if user.is_authenticated %}
 				<p class="comments">Comments to approve: {{post.disapproved_comments.count}}</p>
 			{% endif %}				
 		</div>
 	{% endfor %}
+	{% if user.is_authenticated %}
+		{% if unpublished_posts %}
+			<hr>
+			<div class="unpublished">
+				<h2>Posts that are unpublished</h2>
+				{% for post in unpublished_posts %}
+					<div>
+						<p><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a><p>
+					</div>
+				{% endfor %}
+			</div>
+		{% endif %}
+	{% endif %}
 	<footer class="about-me">
 		<h3><a href="{% url 'cv_page' %}">About me</a></h3>
 	</footer>			
