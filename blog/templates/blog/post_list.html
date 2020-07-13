@@ -12,19 +12,6 @@
 			{% endif %}				
 		</div>
 	{% endfor %}
-	{% if user.is_authenticated %}
-		{% if unpublished_posts %}
-			<hr>
-			<div class="unpublished">
-				<h2>Posts that are unpublished</h2>
-				{% for post in unpublished_posts %}
-					<div>
-						<p><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a><p>
-					</div>
-				{% endfor %}
-			</div>
-		{% endif %}
-	{% endif %}
 	<footer class="about-me">
 		<h3><a href="{% url 'cv_page' %}">About me</a></h3>
 	</footer>			
