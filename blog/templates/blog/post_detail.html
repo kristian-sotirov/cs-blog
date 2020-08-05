@@ -10,6 +10,7 @@
 				<i>{{ post.published_date }}</i> 
 			</div>
 		{% else %}
+			<p>created: {{post.created_date|date:'d-m-Y'}}</p>
 			<a class="btn btn-success publish-button" href="{% url 'post_publish' pk=post.pk %}">Publish</a>	
 		{% endif %}	
 	</div>
