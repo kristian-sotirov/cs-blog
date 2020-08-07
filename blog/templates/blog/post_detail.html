@@ -21,29 +21,31 @@
 		</div>			
 	{% endif %}
 
-	<hr>	
-	{% for comment in post.comments.all %}
-		{% if user.is_authenticated or comment.approved_comment %}
-		<div class="comment">
-			<strong>{{ comment.author }} </strong>
-			<p>{{ comment.text | linebreaks }}</p>
+	{% if post.published_date %}
+		<hr>	
+		{% for comment in post.comments.all %}
+			{% if user.is_authenticated or comment.approved_comment %}
+			<div class="comment">
+				<strong>{{ comment.author }} </strong>
+				<p>{{ comment.text | linebreaks }}</p>
 
-			<div>
-				<i>{{ comment.created_date }}</i>
-			</div>	
-			{% if not comment.approved_comment %}
-				<a class="btn btn-success" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
-			{% endif %}	
-			{% if user.is_authenticated %}
-			<a class="btn btn-danger" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+				<div>
+					<i>{{ comment.created_date }}</i>
+				</div>	
+				{% if not comment.approved_comment %}
+					<a class="btn btn-success" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok"></span></a>
+				{% endif %}	
+				{% if user.is_authenticated %}
+				<a class="btn btn-danger" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+				{% endif %}
+			</div>
 			{% endif %}
+		{% empty %}
+			<p>No comments here yet!</p>
+		{% endfor %}
+		<div class="add-comment">
+			<a class="btn btn-info" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comments</a>
 		</div>
-		{% endif %}
-	{% empty %}
-		<p>No comments here yet!</p>
-	{% endfor %}
-	<div class="add-comment">
-		<a class="btn btn-info" href="{% url 'add_comment_to_post' pk=post.pk %}">Add comments</a>
-	</div>
+	{% endif %}	
 {% endif %}		
 {% endblock %}
