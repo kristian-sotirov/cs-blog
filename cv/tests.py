@@ -218,6 +218,9 @@ class TechnicalSkillsModelTest(TestCase):
 		first_skill.save()
 		response = self.client.get('/cv/technical-skills/edit/1/')
 		self.assertTemplateUsed(response, 'cv/technical_skill_edit.html')
+		
+	#Here we don't have to test the creation of the skills themselves since that was checked in SoftSkillsModelTest
+		
 			
 class InterestsPageTest(TestCase):
 	
@@ -262,13 +265,3 @@ class InterestsModelTest(TestCase):
 		
 		self.assertEqual(first_saved_interest.interest, 'Testing')
 		self.assertEqual(second_saved_interest.interest, 'Second testing')
-		
-	#Here we don't have to test the creation of the skills themselves since that was checked in SoftSkillsModelTest
-		
-		
-		
-		
-		
-		
-		
-		
