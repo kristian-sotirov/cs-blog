@@ -356,13 +356,6 @@ class visitorTest(unittest.TestCase):
 		self.check_saved_interest('Travelling')
 		
 		
-		
-		
-		
-		
-		self.fail('Not ready!!!')
-		
-		
 if __name__ == '__main__':
 	unittest.main(warnings='ignore')		
 					
